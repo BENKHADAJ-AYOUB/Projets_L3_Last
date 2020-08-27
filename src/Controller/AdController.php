@@ -23,9 +23,10 @@ class AdController extends AbstractController
     public function index(AdRepository $repo)
     {
         //$repo =$this->getDoctrine()->getRepository(Ad::class);//permet de parler avec le moteur de doctrine
-        $ads = $repo->findAll();
+        $ads = $repo->findBy(array(), array('date_pub' => 'desc'));
         return $this->render('ad/index.html.twig', [
             'ads' => $ads,
+
         ]);
     }
       /**

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Cocur\Slugify\Slugify;
 use App\Repository\AdRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -54,9 +55,9 @@ class Ad
     }
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="datetime")
      */
-    private $price;
+    private $date_pub;
 
     /**
      * @ORM\Column(type="text")
@@ -79,21 +80,24 @@ class Ad
      */
     private $coverImage;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $rooms;
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="ad", orphanRemoval=true)
      * @Assert\Valid()
      */
     private $images;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="ads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
      
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->date_pub = new \DateTime();
     }
 
     public function getId(): ?int
@@ -125,14 +129,15 @@ class Ad
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getDate_pub(): ?\DateTimeInterface
     {
-        return $this->price;
+        return $this->date_pub;
     }
 
-    public function setPrice(float $price): self
+    public function setDate_pub(\DateTimeInterface $date_pub): self
     {
-        $this->price = $price;
+        $this->date_pub = $date_pub;
+
 
         return $this;
     }
@@ -173,17 +178,7 @@ class Ad
         return $this;
     }
 
-    public function getRooms(): ?int
-    {
-        return $this->rooms;
-    }
 
-    public function setRooms(int $rooms): self
-    {
-        $this->rooms = $rooms;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Image[]
@@ -212,6 +207,18 @@ class Ad
                 $image->setAd(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

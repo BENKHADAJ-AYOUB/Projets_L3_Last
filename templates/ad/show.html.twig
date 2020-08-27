@@ -14,11 +14,11 @@
         {{ ad.introduction }}
       </p>
       <p class="h2">
-        <strong>{{ ad.rooms }} chambres</strong> pour <strong>
-          {{ ad.price }}&euro;
-        </strong>par nuit
+        publié le 
+          {{ ad.date_pub|date("d/m/Y") }}
+        
       </p>
-      <a href="#" class="btn btn-primary">Réserver</a>
+     
     </div>
   </div>
   <div class="container">
@@ -66,15 +66,20 @@
         </div>
       </div>
       <div class="col">
+      {% set a = ad.author %}
         <div class="row">
           <div class="col-4">
-            <img src="http://placehold.it/64x64" alt="Avatar de " Joseph />
+          <a href="{{ path('user_show', {'slug': a.slug}) }}">
+            <img src="{{a.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}" />
+            </a>
           </div>
           <div class="col">
+          <a href="{{ path('user_show', {'slug': a.slug}) }}">
             <h3>
-              Joseph Dupont
+              {{a.fullName}}
             </h3>
-            <span class="badge badge-primary">3 annonces</span>
+          </a>
+            <span class="badge badge-primary"> {{a.ads | length}} articles</span>
           </div>
         </div>
         <p>

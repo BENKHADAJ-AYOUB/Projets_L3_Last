@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Ad;
 use App\Entity\Image;
 
+use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,30 +13,14 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-class AdType extends AbstractType
+class AdType extends ApplicationType
 {
 
-    /**
-     * Permet d'avoir la configuration de base d'un champ !
-     *
-     * @param string $label
-     * @param string $placeholder
-     * @param array $options
-     * @return array
-     */
-    private function getConfiguration($label, $placeholder, $options =[])
-    {
-        return array_merge([
-            'label' => $label,
-            'attr' => [
-                'placeholder'=>$placeholder
-            ]
-
-            ],$options);
-    }
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -51,8 +36,6 @@ class AdType extends AbstractType
             ->add('coverImage',UrlType::class,$this->getConfiguration("Url de l'image principale ","Donnez l'adresse d'une image qui donne vraiment envie"))
             ->add('introduction',TextType::class,$this->getConfiguration("Introduction","Donnez une description globale de l'annonce"))
             ->add('content',TextareaType::class ,$this->getConfiguration("Description","Tapez une déscription qui donne vraiment envie de venir chez vous !"))
-            ->add('rooms',IntegerType::class,$this->getConfiguration("Nombre de chambre","Le nombre de chambre disponible"))
-            ->add('price',MoneyType::class,$this->getConfiguration("Prix par nuit","Indiquez le prix que vous voulez par nuit"))
             ->add(
                 'images',
                 CollectionType::class,
