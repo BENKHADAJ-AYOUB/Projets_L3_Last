@@ -18,9 +18,17 @@
           {{ ad.date_pub|date("d/m/Y") }}
         
       </p>
+      {% if is_granted("ROLE_ADMIN") or (app.user and app.user == ad.author)  %}
+            <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'article</a>
+
+            <a href="{{ path('ads_delete', {'slug': ad.slug})}}" class="btn btn-danger" onclick="return confirm(`Êtes vous sur de vouloir supprimer l'article : {{ad.title}} ?`)">Supprimer l'article</a>
+                     
+        {% endif %}
      
     </div>
   </div>
+
+
   <div class="container">
     <div class="row">
       <div class="col-md-8 mb-3">
@@ -82,21 +90,7 @@
             <span class="badge badge-primary"> {{a.ads | length}} articles</span>
           </div>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-          molestias, maiores ut aperiam iure esse reiciendis non exercitationem
-          nobis voluptatum.
-        </p>
-        <p>
-          Iusto doloribus velit, labore repellendus facere sequi ipsam odit
-          asperiores vero harum sapiente suscipit. Aspernatur quod nobis
-          incidunt eligendi quas.
-        </p>
-        <p>
-          Dolor suscipit tempora corrupti rem corporis quos? Cumque, ut nihil.
-          Quaerat, repudiandae excepturi aliquam iure veniam voluptas facere
-          saepe nihil?
-        </p>
+       {{ a.introduction }}
       </div>
     </div>
   </div>

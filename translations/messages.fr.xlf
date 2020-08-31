@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="W_uMrUi" resname="Your message has been sent successfully&#13;&#10;            ">
+        <source>Your message has been sent successfully&#13;
+            </source>
+        <target>Votre message a été envoyé avec succès&#13;
+            </target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Acceuil</target>
+      </trans-unit>
+      <trans-unit id="VyixqOQ" resname="Start your business online">
+        <source>Start your business online</source>
+        <target>Créez votre entreprise en ligne</target>
+      </trans-unit>
+      <trans-unit id="s9koa3K" resname="Save money and save time">
+        <source>Save money and save time</source>
+        <target>Economisez de l'argent et gagnez du temps</target>
+      </trans-unit>
+      <trans-unit id="Ybh9L6L" resname="Click to Call">
+        <source>Click to Call</source>
+        <target>Cliquez pour appeler</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

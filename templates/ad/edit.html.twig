@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edition d'une annonce{% endblock %}
+{% block title %}Edition d'un article{% endblock %}
 
 
 {% form_theme form 'ad/_collection.html.twig' %}
 
 {% block body %}
      <div class="container">
-        <h1>Modifier l'annonce : {{ad.title}}</h1>
+        <h1>Modifier l'article : {{ad.title}}</h1>
 
         {{ form_start(form) }}
 

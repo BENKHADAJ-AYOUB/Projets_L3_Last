@@ -92,12 +92,15 @@ class Ad
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+   
      
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->date_pub = new \DateTime();
+     
     }
 
     public function getId(): ?int
@@ -222,6 +225,10 @@ class Ad
 
         return $this;
     }
+
+  
+
+   
  
 
 }
