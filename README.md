@@ -1,6 +1,10 @@
 # Projets_L3_Last
 #1. Prérequis
 
+
+composer install
+
+
 php bin/console doctrine:database:create
 
 
